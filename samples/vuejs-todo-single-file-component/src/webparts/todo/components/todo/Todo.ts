@@ -14,7 +14,7 @@ export default class Todo extends Vue implements ITodoWebPartProps {
   @Prop
   public todos: string[];
 
-  public mytodos: string[] = this.todos;
+  // public mytodos: string[] = this.todos;
   public todoTitle: string = '';
 
   public addTodo(): void {
@@ -22,14 +22,14 @@ export default class Todo extends Vue implements ITodoWebPartProps {
       return;
     }
 
-    this.mytodos.push(this.todoTitle);
+    this.todos.push(this.todoTitle);
     this.todoTitle = '';
   }
 
   public completed(todo: string): void {
-    const index: number = this.mytodos.indexOf(todo, 0);
+    const index: number = this.todos.indexOf(todo, 0);
     if (index > -1) {
-      this.mytodos.splice(index, 1);
+      this.todos.splice(index, 1);
     }
   }
 }
